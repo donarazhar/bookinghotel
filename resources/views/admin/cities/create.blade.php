@@ -5,6 +5,7 @@
         </h2>
     </x-slot>
 
+    {{-- Menambahkan data city  --}}
     <div class="py-12">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden p-10 shadow-sm sm:rounded-lg">
