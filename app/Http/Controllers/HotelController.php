@@ -39,12 +39,13 @@ class HotelController extends Controller
     public function store(StoreHotelRequest $request)
     {
         //
+
         DB::transaction(function () use ($request) {
             $validated = $request->validated();
 
             if ($request->hasFile('thumbnail')) {
-                $thumbnailPath = "";
-                $request->file('thumbnail')->store('thumbnails/' . date('Y/m/d'), 'public');
+                $thumbnailPath =
+                    $request->file('thumbnail')->store('thumbnails/' . date('Y/m/d'), 'public');
                 $validated['thumbnail'] = $thumbnailPath;
             }
 
@@ -59,7 +60,6 @@ class HotelController extends Controller
             if ($request->hasFile('photos')) {
                 foreach ($request->file('photos') as $photo) {
                     $photoPath = $photo->store('photos/' . date('Y/m/d'), 'public');
-
                     $hotel->photos()->create([
                         'photo' => $photoPath
                     ]);

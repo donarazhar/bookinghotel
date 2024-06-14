@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCountryRequest;
 use App\Models\Country;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CountryController extends Controller
 {
