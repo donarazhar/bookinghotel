@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreHotelRequest;
+use App\Http\Requests\UpdateHotelRequest;
 
 class HotelController extends Controller
 {
@@ -85,14 +86,42 @@ class HotelController extends Controller
     public function edit(Hotel $hotel)
     {
         //
+        $countries = Country::orderByDesc('id')->get();
+        $cities = City::orderByDesc('id')->get();
+        $latestPhotos = $hotel->photos()->orderByDesc('id')->take(3)->get();
+        return view('admin.hotels.edit', compact('hotel', 'countries', 'cities', 'latestPhotos'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Hotel $hotel)
+    public function update(UpdateHotelRequest $request, Hotel $hotel)
     {
         //
+        DB::transaction(function () use ($request, $hotel) {
+            $validated = $request->validated();
+
+            if ($request->hasFile('thumbnail')) {
+                $thumbnailPath =
+                    $request->file('thumbnail')->store('thumbnails/' . date('Y/m/d'), 'public');
+                $validated['thumbnail'] = $thumbnailPath;
+            }
+
+            $validated['slug'] = Str::slug($validated['name']);
+
+            $hotel->update($validated);
+
+
+            if ($request->hasFile('photos')) {
+                foreach ($request->file('photos') as $photo) {
+                    $photoPath = $photo->store('photos/' . date('Y/m/d'), 'public');
+                    $hotel->photos()->create([
+                        'photo' => $photoPath
+                    ]);
+                }
+            }
+        });
+        return redirect()->route('admin.hotels.index');
     }
 
     /**
@@ -101,5 +130,9 @@ class HotelController extends Controller
     public function destroy(Hotel $hotel)
     {
         //
+        DB::transaction(function () use ($hotel) {
+            $hotel->delete();
+        });
+        return redirect()->route('admin.hotels.index');
     }
 }
