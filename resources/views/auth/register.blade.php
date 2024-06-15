@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('output.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet" />
-
-</head>
-
-<body class="font-poppins text-[#070625]">
+@extends('layouts.master')
+@section('content')
     <section id="content"
         class="max-w-[640px] w-full min-h-screen mx-auto flex flex-col bg-white overflow-x-hidden relative">
         <div class="w-full h-[230px] flex shrink-0 overflow-hidden">
@@ -43,8 +32,8 @@
                                             stroke-linejoin="round" />
                                         <path d="M18 8V2L20 4" stroke="currentColor" stroke-width="1.5"
                                             stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M18 2L16 4" stroke="currentColor" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M18 2L16 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
                                         <path
                                             d="M2.66992 18.9501L7.59992 15.6401C8.38992 15.1101 9.52992 15.1701 10.2399 15.7801L10.5699 16.0701C11.3499 16.7401 12.6099 16.7401 13.3899 16.0701L17.5499 12.5001C18.3299 11.8301 19.5899 11.8301 20.3699 12.5001L21.9999 13.9001"
                                             stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -95,9 +84,9 @@
                                         d="M17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H17C20 3.5 22 5 22 8.5V15.5C22 19 20 20.5 17 20.5Z"
                                         stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
                                         stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M17 9L13.87 11.5C12.84 12.32 11.15 12.32 10.12 11.5L7 9"
-                                        stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
-                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M17 9L13.87 11.5C12.84 12.32 11.15 12.32 10.12 11.5L7 9" stroke="currentColor"
+                                        stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                        stroke-linejoin="round" />
                                 </svg>
                             </div>
                             <input type="email" name="email" id=""
@@ -117,9 +106,8 @@
                                         d="M19.7897 14.9303C17.7297 16.9803 14.7797 17.6103 12.1897 16.8003L7.47966 21.5003C7.13966 21.8503 6.46966 22.0603 5.98966 21.9903L3.80966 21.6903C3.08966 21.5903 2.41966 20.9103 2.30966 20.1903L2.00966 18.0103C1.93966 17.5303 2.16966 16.8603 2.49966 16.5203L7.19966 11.8203C6.39966 9.22031 7.01966 6.27031 9.07966 4.22031C12.0297 1.27031 16.8197 1.27031 19.7797 4.22031C22.7397 7.17031 22.7397 11.9803 19.7897 14.9303Z"
                                         stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
                                         stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M6.88965 17.4902L9.18965 19.7902" stroke="currentColor"
-                                        stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                                        stroke-linejoin="round" />
+                                    <path d="M6.88965 17.4902L9.18965 19.7902" stroke="currentColor" stroke-width="1.5"
+                                        stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                                     <path
                                         d="M14.5 11C15.3284 11 16 10.3284 16 9.5C16 8.67157 15.3284 8 14.5 8C13.6716 8 13 8.67157 13 9.5C13 10.3284 13.6716 11 14.5 11Z"
                                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -169,9 +157,8 @@
                                         d="M19.7897 14.9303C17.7297 16.9803 14.7797 17.6103 12.1897 16.8003L7.47966 21.5003C7.13966 21.8503 6.46966 22.0603 5.98966 21.9903L3.80966 21.6903C3.08966 21.5903 2.41966 20.9103 2.30966 20.1903L2.00966 18.0103C1.93966 17.5303 2.16966 16.8603 2.49966 16.5203L7.19966 11.8203C6.39966 9.22031 7.01966 6.27031 9.07966 4.22031C12.0297 1.27031 16.8197 1.27031 19.7797 4.22031C22.7397 7.17031 22.7397 11.9803 19.7897 14.9303Z"
                                         stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
                                         stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M6.88965 17.4902L9.18965 19.7902" stroke="currentColor"
-                                        stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                                        stroke-linejoin="round" />
+                                    <path d="M6.88965 17.4902L9.18965 19.7902" stroke="currentColor" stroke-width="1.5"
+                                        stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                                     <path
                                         d="M14.5 11C15.3284 11 16 10.3284 16 9.5C16 8.67157 15.3284 8 14.5 8C13.6716 8 13 8.67157 13 9.5C13 10.3284 13.6716 11 14.5 11Z"
                                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -218,8 +205,8 @@
                     href="" class="font-semibold text-[#4041DA]">Sign In</a></p>
         </form>
     </section>
+@endsection
 
+@push('after-scripts')
     <script src="{{ asset('js/file-upload.js') }}"></script>
-</body>
-
-</html>
+@endpush

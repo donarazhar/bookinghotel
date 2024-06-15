@@ -1,27 +1,15 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('output.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet" />
-
-</head>
-
-<body class="font-poppins text-[#070625]">
+@extends('layouts.master')
+@section('content')
     <section id="content"
         class="max-w-[640px] w-full min-h-screen mx-auto flex flex-col bg-white overflow-x-hidden relative">
         <div class="w-full h-[303px] flex shrink-0 overflow-hidden">
             <img src="assets/images/backgrounds/signin-bg.png" class="w-full h-full object-cover" alt="background">
         </div>
-        <form action="{{ route('login') }}" method="POST"
-            class="flex flex-col justify-between flex-1 px-[18px] pt-8 pb-6">
+        <form action="{{ route('login') }}" method="POST" class="flex flex-col justify-between flex-1 px-[18px] pt-8 pb-6">
             @csrf
             <div class="flex flex-col gap-8">
                 <div class="flex flex-col gap-1">
-                    <h1 class="font-semibold text-2xl leading-[36px]">Create Your Account 🙌🏻 </h1>
+                    <h1 class="font-semibold text-2xl leading-[36px]">Please Sign In 🙌🏻 </h1>
                     <p class="font-medium text-sm leading-[21px] text-[#757C98]">Excited to have you on board!</p>
                 </div>
                 <div class="flex flex-col gap-6">
@@ -37,9 +25,9 @@
                                         d="M17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H17C20 3.5 22 5 22 8.5V15.5C22 19 20 20.5 17 20.5Z"
                                         stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
                                         stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M17 9L13.87 11.5C12.84 12.32 11.15 12.32 10.12 11.5L7 9"
-                                        stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
-                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M17 9L13.87 11.5C12.84 12.32 11.15 12.32 10.12 11.5L7 9" stroke="currentColor"
+                                        stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                        stroke-linejoin="round" />
                                 </svg>
                             </div>
                             <input type="email" name="email" id=""
@@ -97,8 +85,7 @@
                             </button>
                         </div>
                         <div class="flex items-center justify-between mt-1">
-                            <label
-                                class="font-medium text-sm leading-[21px] text-[#757C98] flex items-center gap-[6px]">
+                            <label class="font-medium text-sm leading-[21px] text-[#757C98] flex items-center gap-[6px]">
                                 <input type="checkbox" name="" id=""
                                     class="peer w-5 h-5 appearance-none checked:border-2 checked:border-solid checked:border-white rounded-md checked:bg-[#4041DA] ring-1 ring-[#757C98] transition-all duration-300">
                                 <span class="peer-checked:text-[#070625] transition-all duration-300">Remember
@@ -118,7 +105,4 @@
                     href="{{ route('register') }}" class="font-semibold text-[#4041DA]">Create Account</a></p>
         </form>
     </section>
-
-</body>
-
-</html>
+@endsection
