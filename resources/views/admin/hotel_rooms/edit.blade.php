@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('New Hotel Room') }}
+            {{ __('Edit Hotel Room') }}
         </h2>
     </x-slot>
 
@@ -11,53 +11,59 @@
 
                 <div class="item-card flex flex-row justify-between items-center">
                     <div class="flex flex-row items-center gap-x-3">
-                        <img src=" " alt="" class="rounded-2xl object-cover w-[120px] h-[90px]">
+                        <img src="{{ Storage::url($hotel->thumbnail) }}" alt=""
+                            class="rounded-2xl object-cover w-[120px] h-[90px]">
                         <div class="flex flex-col">
                             <h3 class="text-indigo-950 text-xl font-bold">
-                                asdasdsad
+                                {{ $hotel->name }}
                             </h3>
-                        <p class="text-slate-500 text-sm">
-                            asdasdsa, asdasdsa
-                        </p>
+                            <p class="text-slate-500 text-sm">
+                                {{ $hotel->city->name }}, {{ $hotel->country->name }}
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <hr class="my-5"> 
+                <hr class="my-5">
 
-                <form method="POST" action=" " enctype="multipart/form-data"> 
+                <form method="POST" action="{{ route('admin.hotel_rooms.update', $hotelRoom) }}"
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <div>
                         <x-input-label for="name" :value="__('Name')" />
-                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" 
-                          required autofocus autocomplete="name" />
+                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                            value="{{ $hotelRoom->name }}" required autofocus autocomplete="name" />
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     </div>
 
                     <div class="mt-4">
                         <x-input-label for="photo" :value="__('photo')" />
-                        <img src=" " alt="" class="rounded-2xl object-cover w-[120px] h-[90px]">
-                        <x-text-input id="photo" class="block mt-1 w-full" type="file" name="photo" required autofocus autocomplete="photo" />
+                        <img src="{{ Storage::url($hotelRoom->photo) }}" alt=""
+                            class="rounded-2xl object-cover w-[120px] h-[90px]">
+                        <x-text-input id="photo" class="block mt-1 w-full" type="file" name="photo" autofocus
+                            autocomplete="photo" />
                         <x-input-error :messages="$errors->get('photo')" class="mt-2" />
                     </div>
 
                     <div class="mt-4">
                         <x-input-label for="price" :value="__('price')" />
-                        <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" 
-                         required autofocus autocomplete="price" />
+                        <x-text-input id="price" value="{{ $hotelRoom->price }}" class="block mt-1 w-full"
+                            type="number" name="price" required autofocus autocomplete="price" />
                         <x-input-error :messages="$errors->get('price')" class="mt-2" />
                     </div>
 
                     <div class="mt-4">
                         <x-input-label for="total_people" :value="__('total_people')" />
-                        <x-text-input id="total_people" class="block mt-1 w-full" type="number" name="total_people" 
-                         required autofocus autocomplete="total_people" />
+                        <x-text-input id="total_people" value="{{ $hotelRoom->total_people }}" class="block mt-1 w-full"
+                            type="number" name="total_people" required autofocus autocomplete="total_people" />
                         <x-input-error :messages="$errors->get('total_people')" class="mt-2" />
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
-            
+
                         <button type="submit" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
-                            Add New Hotel Room
+                            Update Hotel Room
                         </button>
                     </div>
                 </form>

@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/add/room/{hotel:slug}', [HotelRoomController::class, 'create'])->name('hotel_rooms.create');
             Route::post('/add/room/{hotel:slug}/store', [HotelRoomController::class, 'store'])->name('hotel_rooms.store');
             Route::get('/hotel/{hotel:slug}/room/{hotel_room}/', [HotelRoomController::class, 'edit'])->name('hotel_rooms.edit');
-            Route::put('/room/{hotel:slug}/update', [HotelRoomController::class, 'update'])->name('hotel_rooms.update');
+            Route::put('/hotel/{hotel_room}/update', [HotelRoomController::class, 'update'])->name('hotel_rooms.update');
             Route::delete('/hotel/{hotel:slug}/delete/{hotel_room}', [HotelRoomController::class, 'destroy'])->name('hotel_rooms.destroy');
         });
 
