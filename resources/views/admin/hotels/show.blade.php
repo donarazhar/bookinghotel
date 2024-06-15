@@ -73,40 +73,46 @@
                 <hr class="my-5">
                 <div class="flex flex-row justify-between items-center">
                     <h3 class="text-indigo-950 text-xl font-bold">Rooms Available</h3>
-                    <a href=" " class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                    <a href="{{ route('admin.hotel_rooms.create', $hotel->slug) }}"
+                        class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                         Add New Room
                     </a>
                 </div>
 
-                <div class="item-card flex flex-row justify-between items-center">
-                    <div class="flex flex-row items-center gap-x-3">
-                        <img src=" " alt="" class="rounded-2xl object-cover w-[120px] h-[90px]">
-                        <div class="flex flex-col">
+                @forelse ($hotel->rooms as $room)
+                    <div class="item-card flex flex-row justify-between items-center">
+                        <div class="flex flex-row items-center gap-x-3">
+                            <img src="{{ Storage::url($room->photo) }}" alt=""
+                                class="rounded-2xl object-cover w-[120px] h-[90px]">
+                            <div class="flex flex-col">
+                                <h3 class="text-indigo-950 text-xl font-bold">
+                                    {{ $room->name }}
+                                </h3>
+                                <p class="text-slate-500 text-sm">
+                                    {{ $room->totel_people }} people
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:flex flex-col">
+                            <p class="text-slate-500 text-sm">Price</p>
                             <h3 class="text-indigo-950 text-xl font-bold">
-                                asdasd adsada
+                                Rp {{ number_format($room->price, 0, ',', '.') }}/night
                             </h3>
-                            <p class="text-slate-500 text-sm">
-                                12 people
-                            </p>
+                        </div>
+                        <div class="hidden md:flex flex-row items-center gap-x-3">
+                            <a href=" " class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                                Edit
+                            </a>
+                            <form action=" " method="POST">
+                                <button type="submit" class="font-bold py-4 px-6 bg-red-700 text-white rounded-full">
+                                    Delete
+                                </button>
+                            </form>
                         </div>
                     </div>
-                    <div class="hidden md:flex flex-col">
-                        <p class="text-slate-500 text-sm">Price</p>
-                        <h3 class="text-indigo-950 text-xl font-bold">
-                            Rp 1/night
-                        </h3>
-                    </div>
-                    <div class="hidden md:flex flex-row items-center gap-x-3">
-                        <a href=" " class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
-                            Edit
-                        </a>
-                        <form action=" " method="POST">
-                            <button type="submit" class="font-bold py-4 px-6 bg-red-700 text-white rounded-full">
-                                Delete
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                @empty
+                    <p>Belum ada data kamar terbaru</p>
+                @endforelse
 
             </div>
         </div>
