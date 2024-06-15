@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::prefix('admin')->name('admin.')->group(function () {
+
         Route::middleware('can:manage cities')->group(function () {
             Route::resource('cities', CityController::class);
         });

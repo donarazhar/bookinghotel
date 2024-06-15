@@ -61,14 +61,22 @@ class CountryController extends Controller
     public function edit(Country $country)
     {
         //
+        return view('admin.countries.edit', compact('country'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Country $country)
+    public function update(StoreCountryRequest $request, Country $country)
     {
         //
+        DB::transaction(function () use ($request, $country) {
+            $validated = $request->validated();
+            $validated['slug'] = Str::slug($validated['name']);
+            $country->update($validated);
+        });
+
+        return redirect()->route('admin.countries.index');
     }
 
     /**
@@ -77,5 +85,10 @@ class CountryController extends Controller
     public function destroy(Country $country)
     {
         //
+        //
+        DB::transaction(function () use ($country) {
+            $country->delete();
+        });
+        return redirect()->route('admin.countries.index');
     }
 }
