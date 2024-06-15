@@ -15,10 +15,7 @@ class LocationSeeder extends Seeder
     public function run(): void
     {
         //
-        // Generate cities in Southeast Asia
-        City::factory()->count(20)->state('southeast_asia')->create();
-
-        // Generate countries in Southeast Asia
-        Country::factory()->count(5)->state('southeast_asia')->create();
+        City::factory()->count(20)->create();
+        Country::factory()->count(10)->create();
     }
 }
