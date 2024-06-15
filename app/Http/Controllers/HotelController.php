@@ -75,6 +75,8 @@ class HotelController extends Controller
     public function show(Hotel $hotel)
     {
         //
+        $latestPhotos = $hotel->photos()->orderByDesc('id')->take(3)->get();
+        return view('admin.hotels.show', compact('hotel', 'latestPhotos'));
     }
 
     /**

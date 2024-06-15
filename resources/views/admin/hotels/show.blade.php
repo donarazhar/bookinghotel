@@ -6,7 +6,7 @@
             </h2>
         </div>
     </x-slot>
-    
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-10 flex flex-col gap-y-5">
@@ -14,33 +14,34 @@
 
                 <div class="item-card flex flex-row justify-between items-center">
                     <div class="flex flex-row items-center gap-x-3">
-                        <img src=" " alt="" class="rounded-2xl object-cover w-[120px] h-[90px]">
+                        <img src="{{ Storage::url($hotel->thumbnail) }}" alt=""
+                            class="rounded-2xl object-cover w-[120px] h-[90px]">
                         <div class="flex flex-col">
                             <h3 class="text-indigo-950 text-xl font-bold">
-                                asdsadsaasd
+                                {{ $hotel->name }}
                             </h3>
-                        <p class="text-slate-500 text-sm">
-                            asdasdsa, qweqweqwe
-                        </p>
+                            <p class="text-slate-500 text-sm">
+                                {{ $hotel->city->name }}, {{ $hotel->country->name }}
+                            </p>
                         </div>
-                    </div> 
-                    <div  class="hidden md:flex flex-col">
+                    </div>
+                    <div class="hidden md:flex flex-col">
                         <p class="text-slate-500 text-sm">Price</p>
                         <h3 class="text-indigo-950 text-xl font-bold">
-                            Rp0/night
+                            Rp {{ number_format($hotel->getLowestRoomPrice(), 0, ',', '.') }}/night
                         </h3>
                     </div>
-                    <div  class="hidden md:flex flex-col">
+                    <div class="hidden md:flex flex-col">
                         <p class="text-slate-500 text-sm">Star</p>
                         <h3 class="text-indigo-950 text-xl font-bold">
-                            3 star
+                            {{ $hotel->star_level }}
                         </h3>
                     </div>
                     <div class="hidden md:flex flex-row items-center gap-x-3">
                         <a href=" " class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                             Edit
                         </a>
-                        <form action=" " method="POST"> 
+                        <form action=" " method="POST">
                             <button type="submit" class="font-bold py-4 px-6 bg-red-700 text-white rounded-full">
                                 Delete
                             </button>
@@ -51,16 +52,22 @@
                 <hr class="my-5">
                 <h3 class="text-indigo-950 text-xl font-bold">Gallery Photos</h3>
 
-                <div class="flex flex-row gap-x-5"> 
-                        <img src=" " alt="" class="rounded-2xl object-cover w-[120px] h-[90px]">
-                     
+                <div class="flex flex-row gap-x-5">
+                    @foreach ($latestPhotos as $photo)
+                        <img src="{{ Storage::url($photo->photo) }}" alt=""
+                            class="rounded-2xl object-cover w-[120px] h-[90px]">
+                    @endforeach
+
                 </div>
 
                 <div>
+                    <iframe src="https://www.google.com/maps/embed?{{ $hotel->link_gmaps }}" width="600"
+                        height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <h3 class="text-indigo-950 text-xl font-bold">Address</h3>
-                <p>
-                    asdasdsa qweqw q12
-                </p>
+                    <p>
+                        {{ $hotel->address }}
+                    </p>
                 </div>
 
                 <hr class="my-5">
@@ -70,7 +77,7 @@
                         Add New Room
                     </a>
                 </div>
- 
+
                 <div class="item-card flex flex-row justify-between items-center">
                     <div class="flex flex-row items-center gap-x-3">
                         <img src=" " alt="" class="rounded-2xl object-cover w-[120px] h-[90px]">
@@ -78,12 +85,12 @@
                             <h3 class="text-indigo-950 text-xl font-bold">
                                 asdasd adsada
                             </h3>
-                        <p class="text-slate-500 text-sm">
-                            12 people
-                        </p>
+                            <p class="text-slate-500 text-sm">
+                                12 people
+                            </p>
                         </div>
-                    </div> 
-                    <div  class="hidden md:flex flex-col">
+                    </div>
+                    <div class="hidden md:flex flex-col">
                         <p class="text-slate-500 text-sm">Price</p>
                         <h3 class="text-indigo-950 text-xl font-bold">
                             Rp 1/night
@@ -93,13 +100,13 @@
                         <a href=" " class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                             Edit
                         </a>
-                        <form action=" " method="POST"> 
+                        <form action=" " method="POST">
                             <button type="submit" class="font-bold py-4 px-6 bg-red-700 text-white rounded-full">
                                 Delete
                             </button>
                         </form>
                     </div>
-                </div> 
+                </div>
 
             </div>
         </div>
