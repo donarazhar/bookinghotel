@@ -15,18 +15,36 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.cities.index')" :active="request()->routeIs('admin.cities.index')">
-                        {{ __('Cities') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('admin.countries.index')" :active="request()->routeIs('admin.countries.index')">
-                        {{ __('Countries') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('admin.hotels.index')" :active="request()->routeIs('admin.hotels.index')">
-                        {{ __('Hotels') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('admin.hotel_bookings.index')" :active="request()->routeIs('admin.hotel_bookings.index')">
-                        {{ __('Hotel Bookings') }}
-                    </x-nav-link>
+                    @can('manage cities')
+                        <x-nav-link :href="route('admin.cities.index')" :active="request()->routeIs('admin.cities.index')">
+                            {{ __('Cities') }}
+                        </x-nav-link>
+                    @endcan
+
+                    @can('manage countries')
+                        <x-nav-link :href="route('admin.countries.index')" :active="request()->routeIs('admin.countries.index')">
+                            {{ __('Countries') }}
+                        </x-nav-link>
+                    @endcan
+
+                    @can('manage hotels')
+                        <x-nav-link :href="route('admin.hotels.index')" :active="request()->routeIs('admin.hotels.index')">
+                            {{ __('Hotels') }}
+                        </x-nav-link>
+                    @endcan
+
+                    @can('manage hotel bookings')
+                        <x-nav-link :href="route('admin.hotel_bookings.index')" :active="request()->routeIs('admin.hotel_bookings.index')">
+                            {{ __('Hotel Bookings') }}
+                        </x-nav-link>
+                    @endcan
+
+                    @can('view hotel bookings')
+                        <x-nav-link :href="route('admin.hotel_bookings.index')" :active="request()->routeIs('admin.hotel_bookings.index')">
+                            {{ __('My Bookings') }}
+                        </x-nav-link>
+                    @endcan
+
                 </div>
             </div>
 
