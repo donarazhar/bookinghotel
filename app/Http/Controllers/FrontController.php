@@ -21,6 +21,7 @@ class FrontController extends Controller
 
     public function search_hotels(StoreSearchHotelRequest $request)
     {
+
         $request->session()->put('checkin_at', $request->input('checkin_at'));
         $request->session()->put('checkout_at', $request->input('checkout_at'));
         $request->session()->put('keyword', $request->input('keyword'));
@@ -38,11 +39,11 @@ class FrontController extends Controller
                 $query->where('name', 'like', '%' . $keyword . '%');
             })
 
-            ->whereHas('city', function ($query) use ($keyword) {
+            ->orWhereHas('city', function ($query) use ($keyword) {
                 $query->where('name', 'like', '%' . $keyword . '%');
             })
 
-            ->orWhere('nama', 'like', '%' . $keyword . '%')
+            ->orWhere('name', 'like', '%' . $keyword . '%')
             ->get();
 
         return view('front.list_hotels', compact('hotels', 'keyword'));

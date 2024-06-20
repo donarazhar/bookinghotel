@@ -15,7 +15,7 @@ class LocationSeeder extends Seeder
     public function run(): void
     {
         //
-        City::factory()->count(20)->create();
-        Country::factory()->count(10)->create();
+        City::factory()->count(5)->create();
+        Country::factory()->count(5)->create();
     }
 }

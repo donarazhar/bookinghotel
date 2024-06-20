@@ -27,4 +27,14 @@ class StoreSearchHotelRequest extends FormRequest
             'checkout_at' => ['required', 'date', 'after:today'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'keyword.required' => 'Kolom search hotel harus diisi.',
+            'checkin_at.required' => 'Kolom tanggal checkin harus diisi.',
+            'checkout_at.required' => 'Kolom tanggal checkout harus diisi.',
+            'checkout_at.after' => 'Checkout harus tanggal selanjutnya.',
+        ];
+    }
 }

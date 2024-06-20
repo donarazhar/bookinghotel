@@ -13,7 +13,9 @@
                     </div>
                 </a>
             </div>
-            <form action="hotel-result.html" class="bg-white p-4 flex flex-col gap-6 rounded-xl">
+            <form action="{{ route('front.search.hotels') }}" method="POST"
+                class="bg-white p-4 flex flex-col gap-6 rounded-xl">
+                @csrf
                 <div class="input-container flex flex-col gap-4">
                     <p class="font-semibold">Search Hotel</p>
                     <div
@@ -35,7 +37,7 @@
                         </div>
                         <input type="text" name="keyword" id=""
                             class="appearance-none outline-none w-full bg-white placeholder:text-[#757C98] placeholder:font-medium text-sm font-semibold"
-                            placeholder="Hotel name, city, etc" required>
+                            placeholder="Hotel name, city, etc">
                         <button type="button" class="w-6 h-6 flex shrink-0 group-has-[:invalid]:text-[#757C98]">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -58,6 +60,9 @@
                             </svg>
                         </button>
                     </div>
+                    @if ($errors->has('keyword'))
+                        <span class="text-red-500 text-sm">{{ $errors->first('keyword') }}</span>
+                    @endif
                 </div>
                 <div class="flex flex-col gap-4">
                     <div class="input-container flex flex-col gap-4">
@@ -97,8 +102,11 @@
                                 dd/mm/yyyy
                             </button>
                             <input type="date" name="checkin_at" id="checkIn" class="opacity-0 absolute bottom-0"
-                                required>
+                                :value="old('checkin_at')">
                         </div>
+                        @if ($errors->has('checkout_at'))
+                            <span class="text-red-500 text-sm">{{ $errors->first('checkin_at') }}</span>
+                        @endif
                     </div>
                     <div class="input-container flex flex-col gap-4">
                         <p class="font-semibold">Check-Out Date</p>
@@ -136,9 +144,11 @@
                                 onclick="handleDateButtonClick('checkOut')">
                                 dd/mm/yyyy
                             </button>
-                            <input type="date" name="checkout_at" id="checkOut" class="opacity-0 absolute bottom-0"
-                                required>
+                            <input type="date" name="checkout_at" id="checkOut" class="opacity-0 absolute bottom-0">
                         </div>
+                        @if ($errors->has('checkout_at'))
+                            <span class="text-red-500 text-sm">{{ $errors->first('checkout_at') }}</span>
+                        @endif
                     </div>
                 </div>
                 <button type="submit"
