@@ -17,7 +17,7 @@
     @yield('content')
 
     @stack('before-scripts')
-    {{-- Import file JS custom --}}
+    {{-- Import file JS custom disini --}}
     @stack('after-scripts')
 </body>
 

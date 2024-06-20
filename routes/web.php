@@ -10,6 +10,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
+Route::get('/hotels', [FrontController::class, 'hotels'])->name('front.hotels');
+Route::post('/hotels/search/', [FrontController::class, 'search_hotels'])->name('front.search.hotels');
+Route::post('/hotels/list/{keyword}', [FrontController::class, 'list_hotels'])->name('front.list.hotels');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
