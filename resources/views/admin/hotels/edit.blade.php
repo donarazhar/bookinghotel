@@ -41,7 +41,7 @@
 
                         <select name="city_id" id="city_id"
                             class="py-3 rounded-lg pl-3 w-full border border-slate-300">
-                            <option value="">Choose city</option>
+                            <option value="{{ $hotel->city->id }}">{{ $hotel->city->name }}</option>
                             @foreach ($cities as $city)
                                 <option value="{{ $city->id }}">{{ $city->name }}</option>
                             @endforeach
@@ -55,7 +55,7 @@
 
                         <select name="country_id" id="country_id"
                             class="py-3 rounded-lg pl-3 w-full border border-slate-300">
-                            <option value="">Choose country</option>
+                            <option value="{{ $hotel->country->id }}">{{ $hotel->country->name }}</option>
                             @foreach ($countries as $country)
                                 <option value="{{ $country->id }}">{{ $country->name }}</option>
                             @endforeach

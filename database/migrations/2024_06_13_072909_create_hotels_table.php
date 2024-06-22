@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('star_level');
             $table->foreignId('city_id')->constrained()->onDelete('cascade');
             $table->foreignId('country_id')->constrained()->onDelete('cascade');
-            $table->softDeletes();
+
             $table->timestamps();
         });
     }

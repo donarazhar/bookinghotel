@@ -32,4 +32,38 @@ class StoreHotelRequest extends FormRequest
             'photos.*' => ['required', 'image', 'mimes:png,jpg,jpeg'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama wajib diisi.',
+            'name.string' => 'Nama harus berupa teks.',
+            'name.max' => 'Nama maksimal 255 karakter.',
+
+            'link_gmaps.required' => 'Link Google Maps wajib diisi.',
+            'link_gmaps.string' => 'Link Google Maps harus berupa teks.',
+            'link_gmaps.max' => 'Link Google Maps maksimal 255 karakter.',
+
+            'address.required' => 'Alamat wajib diisi.',
+            'address.string' => 'Alamat harus berupa teks.',
+            'address.max' => 'Alamat maksimal 255 karakter.',
+
+            'thumbnail.required' => 'Thumbnail wajib diunggah.',
+            'thumbnail.image' => 'Thumbnail harus berupa gambar.',
+            'thumbnail.mimes' => 'Thumbnail harus berupa file dengan format: png, jpg, jpeg.',
+
+            'city_id.required' => 'Kota wajib dipilih.',
+            'city_id.integer' => 'Kota harus berupa angka.',
+
+            'country_id.required' => 'Negara wajib dipilih.',
+            'country_id.integer' => 'Negara harus berupa angka.',
+
+            'star_level.required' => 'Tingkat bintang wajib diisi.',
+            'star_level.integer' => 'Tingkat bintang harus berupa angka.',
+
+            'photos.*.required' => 'Semua foto wajib diunggah.',
+            'photos.*.image' => 'Setiap foto harus berupa gambar.',
+            'photos.*.mimes' => 'Setiap foto harus berupa file dengan format: png, jpg, jpeg.',
+        ];
+    }
 }

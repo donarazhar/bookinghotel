@@ -14,14 +14,14 @@
                     <div>
                         <x-input-label for="name" :value="__('Name')" />
                         <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                            :value="old('name')" required autofocus autocomplete="name" />
+                            :value="old('name')" autofocus autocomplete="name" />
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     </div>
 
                     <div class="mt-4">
                         <x-input-label for="thumbnail" :value="__('thumbnail')" />
-                        <x-text-input id="thumbnail" class="block mt-1 w-full" type="file" name="thumbnail" required
-                            autofocus autocomplete="thumbnail" />
+                        <x-text-input id="thumbnail" class="block mt-1 w-full" type="file" name="thumbnail" autofocus
+                            autocomplete="thumbnail" />
                         <x-input-error :messages="$errors->get('thumbnail')" class="mt-2" />
                     </div>
 
@@ -56,7 +56,7 @@
                     <div class="mt-4">
                         <x-input-label for="link_gmaps" :value="__('link_gmaps')" />
                         <x-text-input id="link_gmaps" class="block mt-1 w-full" type="text" name="link_gmaps"
-                            :value="old('link_gmaps')" required autofocus autocomplete="link_gmaps" />
+                            :value="old('link_gmaps')" autofocus autocomplete="link_gmaps" />
                         <x-input-error :messages="$errors->get('link_gmaps')" class="mt-2" />
                     </div>
 
@@ -69,7 +69,7 @@
                     <div class="mt-4">
                         <x-input-label for="star_level" :value="__('star_level')" />
                         <x-text-input id="star_level" class="block mt-1 w-full" type="number" name="star_level"
-                            :value="old('star_level')" required autofocus autocomplete="star_level" />
+                            :value="old('star_level')" autofocus autocomplete="star_level" />
                         <x-input-error :messages="$errors->get('star_level')" class="mt-2" />
                     </div>
 
@@ -79,7 +79,7 @@
                         <div class="mt-4">
                             <x-input-label for="photo" :value="__('photo')" />
                             <x-text-input id="photo" class="block mt-1 w-full" type="file" name="photos[]"
-                                required autofocus autocomplete="photo" />
+                                autofocus autocomplete="photo" />
                             <x-input-error :messages="$errors->get('photo')" class="mt-2" />
                         </div>
                     @endfor

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('price');
             $table->unsignedBigInteger('total_people');
             $table->foreignId('hotel_id')->constrained()->onDelete('cascade');
-            $table->softDeletes();
+
             $table->timestamps();
         });
     }

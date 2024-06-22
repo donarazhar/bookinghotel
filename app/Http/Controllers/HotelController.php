@@ -54,6 +54,7 @@ class HotelController extends Controller
 
             $hotel = Hotel::create($validated);
 
+
             // Menyimpan beberapa foto dari hotel tersebut
             // contoh menyimpan 3 Photo
             // Akan disimpan 1-1
@@ -76,6 +77,7 @@ class HotelController extends Controller
     public function show(Hotel $hotel)
     {
         //
+
         $latestPhotos = $hotel->photos()->orderByDesc('id')->take(3)->get();
         return view('admin.hotels.show', compact('hotel', 'latestPhotos'));
     }
@@ -110,7 +112,6 @@ class HotelController extends Controller
             $validated['slug'] = Str::slug($validated['name']);
 
             $hotel->update($validated);
-
 
             if ($request->hasFile('photos')) {
                 foreach ($request->file('photos') as $photo) {
