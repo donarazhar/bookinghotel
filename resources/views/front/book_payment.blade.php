@@ -78,7 +78,7 @@
                             <div class="flex flex-col gap-[2px]">
                                 <p class="font-semibold text-sm leading-[21px] text-[#4041DA]">
                                     {{ $hotel_booking->checkin_at->format('d M') }} -
-                                    {{ $hotel_booking->checkout_at->format('d M') }}
+                                    {{ $hotel_booking->checkout_at->format('d M Y') }}
                                     ({{ $hotel_booking->total_days }} Night)
                                 </p>
                                 <p class="font-semibold">
