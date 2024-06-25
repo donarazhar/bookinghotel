@@ -63,8 +63,12 @@
                                     </p>
                                     <p class="text-[#757C98] font-semibold text-xs leading-[18px]">/night</p>
                                 </div>
-                                <a href="transfer-details.html"
-                                    class="w-[138px] h-[48px] bg-[#4041DA] p-[12px_24px] rounded-full text-nowrap text-white font-semibold text-sm leading-[21px] flex items-center justify-center">Choose</a>
+                                <form action="{{ route('front.hotel.room.book', [$hotel->slug, $room->id]) }}"
+                                    method="POST">
+                                    @csrf
+                                    <button type="submit"
+                                        class="w-[138px] h-[48px] bg-[#4041DA] p-[12px_24px] rounded-full text-nowrap text-white font-semibold text-sm leading-[21px] flex items-center justify-center">Choose</button>
+                                </form>
                             </div>
                         </div>
                     </div>

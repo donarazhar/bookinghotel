@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreHotelBookingRequest;
 use App\Http\Requests\StoreSearchHotelRequest;
 use App\Models\Hotel;
+use App\Models\HotelBooking;
+use App\Models\HotelRoom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
 {
@@ -58,5 +63,54 @@ class FrontController extends Controller
     public function hotel_rooms(Hotel $hotel)
     {
         return view('front.list_hotel_rooms', compact('hotel'));
+    }
+
+    public function hotel_room_book(StoreHotelBookingRequest $request, Hotel $hotel, HotelRoom $hotel_room)
+    {
+        $user = Auth::user();
+
+        $checkin_at = $request->session()->get('checkin_at');
+        $checkout_at = $request->session()->get('checkout_at');
+
+        $hotelBookingId = null;
+
+        // Closure based database transaction
+        DB::transaction(function () use (
+            $request,
+            $user,
+            $hotel,
+            $hotel_room,
+            $checkin_at,
+            $checkout_at,
+            &$hotelBookingId,
+        ) {
+            $validated = $request->validated();
+
+            $validated['user_id'] = $user->id;
+            $validated['hotel_id'] = $hotel->id;
+
+            $validated['checkin_at'] = $checkin_at;
+            $validated['checkout_at'] = $checkout_at;
+
+            $validated['hotel_room_id'] = $hotel_room->id;
+            $validated['is_paid'] = false;
+            $validated['proof'] = 'dummytrx.png';
+
+            // Calculate total days
+            $checkinDate = \Carbon\Carbon::parse($checkin_at);
+            $checkoutDate = \Carbon\Carbon::parse($checkout_at);
+            $totalDays = $checkinDate->diffInDays($checkoutDate);
+
+            $validated['total_days'] = $totalDays;
+
+            // Calculate total amount
+            $validated['total_amount'] = $hotel_room->price * $totalDays;
+
+            $newBooking = HotelBooking::create($validated);
+
+            $hotelBookingId = $newBooking->id;
+        });
+
+        return redirect()->route('front.hotel.book.payment', $hotelBookingId);
     }
 }
