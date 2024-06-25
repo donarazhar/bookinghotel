@@ -43,6 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::middleware('can:view hotel bookings')->group(function () {
         Route::get('/dashboard/my-bookings', [DashboardController::class, 'my_bookings'])
             ->name('dashboard.my-bookings');
+        Route::get('/dashboard/my-bookings/{hotelBooking}', [DashboardController::class, 'booking_details'])
+            ->name('dashboard.booking_details');
     });
 
     Route::prefix('admin')->name('admin.')->group(function () {

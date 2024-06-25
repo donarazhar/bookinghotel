@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="order-details-pending.html"
+                        <a href="{{ route('dashboard.booking_details', $booking) }}"
                             class="flex items-center justify-center font-semibold p-[12px_24px] rounded-lg h-12 bg-[#4041DA17] text-[#4041DA] m-4 mt-0">Booking
                             Details</a>
                     </div>
@@ -95,7 +95,7 @@
         <div id="Menu-bar" class="fixed bottom-[24px] px-[18px] max-w-[640px] w-full z-30">
             <div
                 class="bg-white p-[14px_12px] rounded-full flex items-center justify-center gap-8 shadow-[0_8px_30px_0_#0A093212]">
-                <a href="index.html">
+                <a href="{{ route('front.index') }}">
                     <div class="flex flex-col gap-1 items-center">
                         <div class="w-6 h-6 flex shrink-0">
                             <img src="{{ asset('assets/images/icons/home-nonactive.svg') }}" alt="icon">
@@ -111,7 +111,7 @@
                         <p class="text-xs leading-[18px] font-medium text-[#757C98]">Search</p>
                     </div>
                 </a>
-                <a href="">
+                <a href="{{ route('dashboard.my-bookings') }}">
                     <div class="flex flex-col gap-1 items-center">
                         <div class="w-6 h-6 flex shrink-0">
                             <img src="{{ asset('assets/images/icons/activity-active.svg') }}" alt="icon">
@@ -119,7 +119,7 @@
                         <p class="text-xs leading-[18px] font-medium text-[#4041DA]">Activity</p>
                     </div>
                 </a>
-                <a href="">
+                <a href="{{ route('dashboard') }}">
                     <div class="flex flex-col gap-1 items-center">
                         <div class="w-6 h-6 flex shrink-0">
                             <img src="{{ asset('assets/images/icons/settings-nonactive.svg') }}" alt="icon">
